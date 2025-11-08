@@ -1,0 +1,11 @@
+{
+  "name": "line-drink-logger",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": { "start": "node api/webhook.js" },
+  "dependencies": {
+    "@line/bot-sdk": "^9.1.0",
+    "axios": "^1.7.7",
+    "express": "^4.19.2"
+  }
+}
