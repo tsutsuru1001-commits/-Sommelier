@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drink Logger</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <style>
+    body{font-family: system-ui, -apple-system, sans-serif; margin:16px}
+    .row{display:flex; gap:12px; margin-bottom:10px}
+    input, select, textarea{flex:1; padding:10px; font-size:16px}
+    button{padding:12px 16px; font-size:16px; border:0; background:#06c755; color:#fff; border-radius:8px}
+    .note{color:#666; font-size:12px}
+    label{display:block; font-size:12px; margin-bottom:4px; color:#555}
+  </style>
+</head>
+<body>
+  <h2>Drink Logger</h2>
+
+  <div class="row"><div style="flex:1">
+    <label>名称</label>
+    <input id="name" placeholder="Name / Label">
+  </div></div>
+
+  <div class="row">
+    <div style="flex:1">
+      <label>タイプ</label>
+      <select id="type">
+        <option value="wine">wine</option><option value="beer">beer</option>
+        <option value="whisky">whisky</option><option value="sake">sake</option>
+        <option value="cocktail">cocktail</option><option value="shochu">shochu</option>
+        <option value="other">other</option>
+      </select>
+    </div>
+    <div style="flex:1">
+      <label>価格(JPY)</label>
+      <input id="price" type="number" step="100" placeholder="price">
+    </div>
+    <div style="flex:1">
+      <label>ABV(%)</label>
+      <input id="abv" type="number" step="0.1" placeholder="ABV">
+    </div>
+  </div>
+
+  <div class="row">
+    <div style="flex:1">
+      <label>taste (1-10)</label>
+      <input id="taste" type="range" min="1" max="10" value="7"
+             oninput="document.getElementById('tastev').textContent=this.value">
+      <div id="tastev">7</div>
+    </div>
+    <div style="flex:1">
+      <label>aroma (1-10)</label>
+      <input id="aroma" type="range" min="1" max="10" value="7"
+             oninput="document.getElementById('aromav').textContent=this.value">
+      <div id="aromav">7</div>
+    </div>
+    <div style="flex:1">
+      <label>balance (1-10)</label>
+      <input id="balance" type="range" min="1" max="10" value="7"
+             oninput="document.getElementById('balancev').textContent=this.value">
+      <div id="balancev">7</div>
+    </div>
+  </div>
+
+  <div class="row"><div style="flex:1">
+    <label>タグ (カンマ区切り)</label>
+    <input id="tags" placeholder="home,friends">
+  </div></div>
+
+  <div class="row"><div style="flex:1">
+    <label>コメント</label>
+    <textarea id="comment" rows="3" placeholder="comment"></textarea>
+  </div></div>
+
+  <button id="sendBtn">LINEに送信</button>
+  <p class="note">※ トークへ「/log ...」形式のメッセージを送ります。</p>
+
+  <script src="./liff.js"></script>
+</body>
+</html>
